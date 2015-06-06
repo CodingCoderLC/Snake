@@ -54,7 +54,7 @@ namespace Snake.Views
             }
 
             _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(125);
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(250);
             _dispatcherTimer.Tick += Tick;
 
             _dispatcherTimer.IsEnabled = true;

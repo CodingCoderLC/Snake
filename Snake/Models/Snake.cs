@@ -21,7 +21,7 @@ namespace Snake.Models
             _snakeElementHeight = snakeElementHeight;
             _snakeElementWidth = snakeElementWidth;
 
-            SnakeElements = new List<SnakeElement> { new SnakeElement(x, y, snakeElementHeight, snakeElementWidth) };
+            SnakeElements = new List<SnakeElement> { new SnakeElement(x, y, snakeElementHeight, snakeElementWidth)};
             Direction = Direction.Up;
         }
 
