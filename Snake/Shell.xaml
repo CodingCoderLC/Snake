@@ -5,12 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
-        Title="Shell" Height="300" Width="300" WindowStartupLocation="CenterScreen"
-        Background="#89A08C">
-    <Border BorderBrush="Black" BorderThickness="2" Margin="10" >
+        Title="Shell" Height="480" Width="680" WindowStartupLocation="CenterScreen"
+        Background="#89A08C" ResizeMode="CanMinimize">
+    <Border BorderBrush="#222" BorderThickness="8" Margin="10" >
         <Grid>
-
         </Grid>
     </Border>
-
 </Window>
