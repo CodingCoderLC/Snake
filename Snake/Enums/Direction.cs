@@ -8,9 +8,9 @@ namespace Snake.Enums
 {
     public enum Direction
     {
-        Top,
+        Up,
         Right,
-        Bottom,
+        Down,
         Left
     }
 }

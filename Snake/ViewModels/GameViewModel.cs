@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Snake.Models;
 
 namespace Snake.ViewModels
 {
@@ -11,6 +12,8 @@ namespace Snake.ViewModels
     {
         private int _score;
         private Snake.Models.Snake _snake;
+        private int _snakeElementWidth;
+        private int _snakeElementHeight;
 
         public int Score
         {
@@ -21,14 +24,24 @@ namespace Snake.ViewModels
             }
         }
 
-        public GameViewModel(double x, double y)
+        public bool SnakeHasHitPickupItem { get; private set; }
+
+        public GameViewModel(double x, double y, int snakeElementWidth, int snakeElementHeight)
         {
-            _snake = new Snake.Models.Snake(x, y);
+            _snake = new Snake.Models.Snake(x, y, snakeElementHeight, snakeElementWidth);
+
+            this._snakeElementWidth = snakeElementWidth;
+            this._snakeElementHeight = snakeElementHeight;
         }
 
         internal void Move()
         {
             _snake.Move();
+        }
+
+        internal Models.Snake GetSnakeInstance()
+        {
+            return _snake;
         }
     }
 }
