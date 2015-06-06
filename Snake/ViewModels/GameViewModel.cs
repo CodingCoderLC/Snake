@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Snake.Models;
+using Snake.Enums;
 
 namespace Snake.ViewModels
 {
@@ -32,6 +33,11 @@ namespace Snake.ViewModels
 
             this._snakeElementWidth = snakeElementWidth;
             this._snakeElementHeight = snakeElementHeight;
+        }
+
+        internal void SetDirection(Direction direction)
+        {
+            _snake.Direction = direction;
         }
 
         internal void Move()

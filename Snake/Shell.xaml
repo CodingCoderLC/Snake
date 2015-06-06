@@ -8,7 +8,5 @@
         mc:Ignorable="d"
         Title="Shell" Height="480" Width="680" WindowStartupLocation="CenterScreen"
         Background="#89A08C" ResizeMode="CanMinimize">
-    <Border BorderBrush="#222" BorderThickness="8" Margin="10" >
-        <view:GameView />
-    </Border>
+    <view:GameView Margin="10" />
 </Window>

@@ -1,4 +1,5 @@
-﻿using Snake.Models;
+﻿using Snake.Enums;
+using Snake.Models;
 using Snake.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,9 @@ namespace Snake.Views
         public GameView()
         {
             InitializeComponent();
+
+            this.Focusable = true;
+            this.Focus();
         }
 
         private void SnakeCanvas_Loaded(object sender, RoutedEventArgs e)
@@ -42,18 +46,15 @@ namespace Snake.Views
 
             foreach(SnakeElement snakeElement in _gameViewModel.GetSnakeInstance().SnakeElements)
             {
-                Rectangle snakeElementShape = new Rectangle();
-                Canvas.SetLeft(snakeElementShape, snakeElement.X);
-                Canvas.SetTop(snakeElementShape, snakeElement.Y);
-                snakeElementShape.Width = SnakeElementWidth;
-                snakeElementShape.Height = SnakeElementHeight;
-                snakeElementShape.Fill = new SolidColorBrush(Color.FromRgb(51, 51, 51)); //#333333
-
-                SnakeCanvas.Children.Add(snakeElementShape);
+                SnakeCanvas.Children.Add(CreateSnakeElementShape(snakeElement.X,
+                                                                 snakeElement.Y,
+                                                                 SnakeElementWidth,
+                                                                 SnakeElementHeight,
+                                                                 new SolidColorBrush(Color.FromRgb(51, 51, 51))));
             }
 
             _dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(500);
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(125);
             _dispatcherTimer.Tick += Tick;
 
             _dispatcherTimer.IsEnabled = true;
@@ -73,17 +74,56 @@ namespace Snake.Views
             }
             else
             {
-                Rectangle snakeElementShape = new Rectangle();
-                Canvas.SetLeft(snakeElementShape, snake.SnakeElements[0].X);
-                Canvas.SetTop(snakeElementShape, snake.SnakeElements[0].Y);
-                snakeElementShape.Width = SnakeElementWidth;
-                snakeElementShape.Height = SnakeElementHeight;
-                snakeElementShape.Fill = new SolidColorBrush(Color.FromRgb(51,51,51)); //#333333
-
-                SnakeCanvas.Children.Insert(0, snakeElementShape);
+                SnakeCanvas.Children.Insert(0, CreateSnakeElementShape(snake.SnakeElements[0].X,
+                                                                       snake.SnakeElements[0].Y,
+                                                                       SnakeElementWidth,
+                                                                       SnakeElementHeight,
+                                                                       new SolidColorBrush(Color.FromRgb(51, 51, 51))));
                 SnakeCanvas.Children.RemoveAt(SnakeCanvas.Children.Count - 1);
             }
 
+        }
+
+        internal UIElement CreateSnakeElementShape(double left, double top, int width, int height, Brush fill)
+        {
+            Rectangle snakeElementShape = new Rectangle();
+            Canvas.SetLeft(snakeElementShape, left);
+            Canvas.SetTop(snakeElementShape, top);
+            snakeElementShape.Width = width;
+            snakeElementShape.Height = height;
+            snakeElementShape.Fill = fill;
+
+            return snakeElementShape;
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.W:
+                case Key.Up:
+                    _gameViewModel.SetDirection(Direction.Up);
+                    break;
+
+                case Key.D:
+                case Key.Right:
+                    _gameViewModel.SetDirection(Direction.Right);
+                    break;
+
+                case Key.S:
+                case Key.Down:
+                    _gameViewModel.SetDirection(Direction.Down);
+                    break;
+
+                case Key.A:
+                case Key.Left:
+                    _gameViewModel.SetDirection(Direction.Left);
+                    break;
+
+                default:
+                    base.OnKeyDown(e);
+                    break;
+            }
         }
     }
 }

@@ -23,5 +23,10 @@ namespace Snake
         {
             InitializeComponent();
         }
+
+        private void Border_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Focus();
+        }
     }
 }
