@@ -10,6 +10,7 @@ namespace Snake.ViewModels
     public class GameViewModel : BaseViewModel
     {
         private int _score;
+        private Snake.Models.Snake _snake;
 
         public int Score
         {
@@ -20,5 +21,14 @@ namespace Snake.ViewModels
             }
         }
 
+        public GameViewModel(double x, double y)
+        {
+            _snake = new Snake.Models.Snake(x, y);
+        }
+
+        internal void Move()
+        {
+            _snake.Move();
+        }
     }
 }

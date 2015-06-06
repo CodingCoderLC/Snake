@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Snake.Views
 {
@@ -21,6 +22,8 @@ namespace Snake.Views
     /// </summary>
     public partial class GameView : UserControl
     {
+        private DispatcherTimer _dispatcherTimer;
+
         private GameViewModel _gameViewModel;
 
         public GameView()
@@ -28,7 +31,19 @@ namespace Snake.Views
             _gameViewModel = new GameViewModel();
             DataContext = _gameViewModel;
 
+            _dispatcherTimer = new DispatcherTimer();
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(30);
+            _dispatcherTimer.Tick += Tick;
+
+            _dispatcherTimer.IsEnabled = true;
+            _dispatcherTimer.Start();
+
             InitializeComponent();
+        }
+
+        private void Tick(object sender, EventArgs e)
+        {
+            _gameViewModel.Move();
         }
     }
 }

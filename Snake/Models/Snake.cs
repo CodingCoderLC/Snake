@@ -17,5 +17,10 @@ namespace Snake.Models
         {
             SnakeElements = new List<SnakeElement> { new SnakeElement(x, y) };
         }
+
+        internal void Move()
+        {
+
+        }
     }
 }
