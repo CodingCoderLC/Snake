@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Snake.Models
+namespace Snake.ViewModels
 {
-    public class Snake
+    public class GameViewModel : BaseViewModel
     {
-        public List<SnakeElement> SnakeElements { get; set; }
     }
 }

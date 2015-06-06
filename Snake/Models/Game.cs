@@ -8,5 +8,6 @@ namespace Snake.Models
 {
     public class Game
     {
+        public Snake Snake { get; set; }
     }
 }
