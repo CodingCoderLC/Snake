@@ -58,6 +58,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\Direction.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Snake.cs" />
     <Compile Include="Models\SnakeElement.cs" />
