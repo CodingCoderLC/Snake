@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
+        xmlns:view="clr-namespace:Snake.Views"
         mc:Ignorable="d"
         Title="Shell" Height="480" Width="680" WindowStartupLocation="CenterScreen"
         Background="#89A08C" ResizeMode="CanMinimize">
     <Border BorderBrush="#222" BorderThickness="8" Margin="10" >
-        <Grid>
-        </Grid>
+        <view:GameView />
     </Border>
 </Window>
