@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snake.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,13 @@ namespace Snake.Views
     /// </summary>
     public partial class GameView : UserControl
     {
+        private GameViewModel _gameViewModel;
+
         public GameView()
         {
+            _gameViewModel = new GameViewModel();
+            DataContext = _gameViewModel;
+
             InitializeComponent();
         }
     }
